@@ -1,6 +1,6 @@
 package Collector;
 
-import Controller.Primitive;
+import Controller.PrimitiveTypeDetection;
 import POJOs.ClassPOJO;
 import POJOs.MethodPOJO;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
@@ -29,7 +29,7 @@ public class ClassInfo extends VoidVisitorAdapter<List<ClassPOJO>> {
 
  //   cPojo.setVariableDeclarators();
 
-    cPojo = new Primitive().PrimitiveDetection(cPojo);
+    cPojo = new PrimitiveTypeDetection().PrimitiveDetection(cPojo);
 
 
     list.add(cPojo);
