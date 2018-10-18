@@ -1,6 +1,4 @@
 import Collector.ClassInfo;
-import Controller.LongMethodDetection;
-import Controller.Primitive;
 import POJOs.ClassPOJO;
 import POJOs.MethodPOJO;
 import com.github.javaparser.JavaParser;
@@ -12,6 +10,8 @@ import java.util.List;
 
 public class Main {
     private static final String FILE_PATH = "/Users/User/Documents/Uni/4-Fourth Year/CS409/Lab2/ReversePolish.java";
+   // private static final String FILE_PATH = "/Users/User/Documents/Uni/4-Fourth Year/CS409/Lab2/ExamplePojo.java";
+
 
     public static void main(String[] args) throws Exception{
         CompilationUnit cu = JavaParser.parse(new File(FILE_PATH));
@@ -22,13 +22,40 @@ public class Main {
         for(ClassPOJO info : classes){
             for(MethodPOJO mPojo : info.getMethods()){
                 System.out.println("Method Name " + mPojo.getMethodName() );
-                System.out.println("Method too long " + mPojo.isMethodTooLong());
-                System.out.println("Parameter list too long " + mPojo.isParamTooLong());
-                System.out.println("Method primitive types " + mPojo.getParameters());
+
+                if(mPojo.isMethodTooLong()==true){
+                    System.out.println("This is a long method");
+                }
+
+                if(mPojo.isParamTooLong()==true){
+                    System.out.println("The parameter list for this method is too long");
+                }
+
+                if(mPojo.getParameters().size()>0){
+                    System.out.println("This method has primitive types : " + mPojo.getParameters());
+                }
+
+
+
+                if(mPojo.isSwitchStmt()==true){
+                    System.out.println("This method has a switch statement");
+                }
+                System.out.println("\n");
             }
+
             System.out.println("Name : " + info.getClassName());
-            System.out.println("Too long : " + info.isClassTooLong());
-            System.out.println("Primitive types : " );
+            if(info.isClassTooLong()==true){
+                System.out.println("This is a large class");
+            }
+
+            if(info.isDataClass()==true){
+                System.out.println("This is a data class");
+            }
+            System.out.println("Primitive types in this class " + info.getVariableDeclarators());
+
+
+
+
         }
 
     }

@@ -2,22 +2,17 @@ package POJOs;
 
 import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.ast.body.VariableDeclarator;
-import com.github.javaparser.ast.stmt.Statement;
 
 import java.util.List;
 
-public class ClassPOJO {
+public class ExamplePojo {
 
     private String className;
     private int length;
-    private boolean classTooLong;
-    private boolean paramTooLong;
-    private boolean switchStatements;
-    private boolean dataClass;
+    private boolean classTooLong, paramTooLong, switchStatements;
     private List<FieldDeclaration> fieldDeclarations;
     private List<VariableDeclarator> variableDeclarators;
     private List<MethodPOJO> methods;
-    private List<Statement> getterSetter;
 
 
 
@@ -84,23 +79,6 @@ public class ClassPOJO {
 
     public void setSwitchStatements(boolean switchStatements) {
         this.switchStatements = switchStatements;
-    }
-
-    public List<Statement> getGetterSetter() {
-        return getterSetter;
-    }
-
-    public void setGetterSetter(List<Statement> getterSetter) {
-        this.getterSetter = getterSetter;
-    }
-
-
-    public boolean isDataClass() {
-        return dataClass;
-    }
-
-    public void setDataClass(boolean dataClass) {
-        this.dataClass = dataClass;
     }
 
 

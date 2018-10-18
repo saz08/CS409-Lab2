@@ -5,6 +5,7 @@ import POJOs.MethodPOJO;
 import com.github.javaparser.ast.body.FieldDeclaration;
 import com.github.javaparser.ast.body.Parameter;
 import com.github.javaparser.ast.body.VariableDeclarator;
+import com.github.javaparser.ast.stmt.Statement;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,6 +45,8 @@ public class PrimitiveTypeDetection {
             }
             methodInfo.setParameters(parameterPrimitive);
         }
+
+
 
         classes.setVariableDeclarators(collectPrimitives);
 

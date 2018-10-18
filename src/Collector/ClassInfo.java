@@ -1,6 +1,8 @@
 package Collector;
 
+import Controller.DataClassDetection;
 import Controller.PrimitiveTypeDetection;
+import Controller.SwitchStmtDetector;
 import POJOs.ClassPOJO;
 import POJOs.MethodPOJO;
 import com.github.javaparser.ast.body.ClassOrInterfaceDeclaration;
@@ -22,6 +24,8 @@ public class ClassInfo extends VoidVisitorAdapter<List<ClassPOJO>> {
     new MethodInfo().visit(md,methodList);
     ClassPOJO cPojo = new ClassPOJO();
 
+
+
     cPojo.setClassName(md.getNameAsString());
     cPojo.setLength(md.getEnd().get().line);
     cPojo.setMethods(methodList);
@@ -30,7 +34,7 @@ public class ClassInfo extends VoidVisitorAdapter<List<ClassPOJO>> {
  //   cPojo.setVariableDeclarators();
 
     cPojo = new PrimitiveTypeDetection().PrimitiveDetection(cPojo);
-
+    cPojo = new DataClassDetection().DataClassDetection(cPojo);
 
     list.add(cPojo);
 
